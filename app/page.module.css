@@ -198,7 +198,7 @@
   height: 180px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  position: relative;
 }
 
 .card:hover:not(.cardDisabled) {
@@ -211,13 +211,20 @@
   cursor: default;
 }
 
+.cardContent {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+}
+
 .cardItem {
   font-size: 1.1rem;
   font-weight: 600;
   color: #333;
   margin: 0;
-  margin-bottom: auto;
   line-height: 1.4;
+  flex: 1;
 }
 
 .cardItemPlaceholder {
@@ -225,17 +232,17 @@
   font-weight: 500;
   color: #999;
   margin: 0;
-  margin-bottom: auto;
   line-height: 1.4;
   font-style: italic;
+  flex: 1;
 }
 
 .cardFooter {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: 1rem;
-  padding-top: 1rem;
+  margin-top: auto;
+  padding: 1rem 0 0 0;
   border-top: 1px solid #e9ecef;
   transition: all 0.2s;
 }
@@ -244,17 +251,19 @@
   text-decoration: none;
   color: inherit;
   display: block;
-  margin-top: auto;
+  margin: 0 -1.5rem -1.5rem -1.5rem;
+  padding: 0 1.5rem 1.5rem 1.5rem;
 }
 
 .cardFooterLink:hover .cardFooter {
   background: #e9ecef;
   border-radius: 6px;
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
+  border-top-color: #e9ecef;
+  padding: 0.5rem;
   margin-left: -0.5rem;
   margin-right: -0.5rem;
-  border-top-color: #333;
+  margin-bottom: -0.5rem;
+  margin-top: 0.5rem;
 }
 
 .cardLibrary {

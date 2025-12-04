@@ -1,69 +1,9 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FiDownload, FiUpload, FiExternalLink } from 'react-icons/fi';
 import styles from './page.module.css';
-
-// Letter morphing component that rotates through options with letter-by-letter animation
-function RotatingText({ options, className }: { options: string[]; className?: string }) {
-  // Start at a random index to avoid always showing the first option
-  const [currentIndex, setCurrentIndex] = useState(() => Math.floor(Math.random() * options.length));
-  const [previousIndex, setPreviousIndex] = useState(currentIndex);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setPreviousIndex(currentIndex);
-      setCurrentIndex((prev) => (prev + 1) % options.length);
-    }, 600); // Change faster - every 600ms
-
-    return () => clearInterval(interval);
-  }, [currentIndex, options.length]);
-
-  const currentText = options[currentIndex] || options[0];
-  const previousText = options[previousIndex] || options[0];
-  const maxLength = Math.max(currentText.length, previousText.length);
-
-  return (
-    <span className={className} style={{ display: 'inline-block' }}>
-      {Array.from({ length: maxLength }).map((_, i) => {
-        const currentChar = currentText[i] || ' ';
-        const previousChar = previousText[i] || ' ';
-        const isChanging = currentChar !== previousChar;
-
-        return (
-          <motion.span
-            key={`${currentIndex}-${i}`}
-            initial={isChanging ? { 
-              opacity: 0, 
-              y: 20, 
-              rotateX: -90,
-              scale: 0.8
-            } : { opacity: 1, y: 0, rotateX: 0, scale: 1 }}
-            animate={{ 
-              opacity: 1, 
-              y: 0, 
-              rotateX: 0,
-              scale: 1
-            }}
-            transition={{ 
-              duration: 0.4,
-              delay: i * 0.03,
-              ease: "easeOut"
-            }}
-            style={{ 
-              display: 'inline-block',
-              transformStyle: 'preserve-3d',
-              whiteSpace: currentChar === ' ' ? 'pre' : 'normal'
-            }}
-          >
-            {currentChar === ' ' ? '\u00A0' : currentChar}
-          </motion.span>
-        );
-      })}
-    </span>
-  );
-}
 
 interface Selection {
   input: {
@@ -89,61 +29,25 @@ export default function Home() {
   const [loadingSelection, setLoadingSelection] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const inputOptions = [
-    'GPS coordinates',
-    'Heart rate data',
-    'Step count',
-    'Location accuracy',
-    'Device orientation',
-    'Battery level',
-    'Music playback',
-    'Calendar events',
-    'Weather data',
-    'Activity recognition',
-  ];
-
-  const outputOptions = [
-    'Push notification',
-    'Home screen widget',
-    'Dynamic Island',
-    'Haptic feedback',
-    'Calendar event',
-    'Siri shortcut',
-    'Watch complication',
-    'Text-to-speech',
-    'App badge',
-    'Live activity',
-  ];
-
-  const libraryOptions = [
-    'Core Location',
-    'HealthKit',
-    'CoreMotion',
-    'EventKit',
-    'WidgetKit',
-    'ActivityKit',
-    'UserNotifications',
-    'CoreHaptics',
-    'App Intents',
-    'PhotoKit',
-  ];
-
   const getRandomSelection = async () => {
+    const previousSelection = selection; // Store previous selection
     setLoadingSelection(true);
     setError(null);
     setResponse(null);
-    // Keep previous selection visible during animation, don't clear it yet
+    // Keep previous selection visible during loading - don't clear it
     
     try {
       const res = await fetch('/api/random');
       if (!res.ok) throw new Error('Failed to get random selection');
       const data = await res.json();
-      // Add a small delay to ensure animation is visible
-      await new Promise(resolve => setTimeout(resolve, 800));
-      setSelection(data);
+      // Only update if we got valid data, and do it atomically
+      if (data && data.input && data.output) {
+        // Update both states together - React 18+ batches these automatically
+        setSelection(data);
+        setLoadingSelection(false);
+      }
     } catch (err: any) {
       setError(err.message || 'Failed to get random selection');
-    } finally {
       setLoadingSelection(false);
     }
   };
@@ -207,38 +111,32 @@ export default function Home() {
               <span className={!selection && !loadingSelection ? styles.cardLabelDisabled : ''}>Input</span>
             </div>
             <div className={`${styles.card} ${!selection && !loadingSelection ? styles.cardDisabled : ''}`}>
-              {loadingSelection ? (
-                <>
-                  <h3 className={styles.cardItem}>
-                    <RotatingText options={inputOptions} />
-                  </h3>
-                  <div className={styles.cardFooter}>
-                    <span className={styles.cardLibrary}>
-                      <RotatingText options={libraryOptions} />
-                    </span>
-                    <span className={styles.cardLinkPlaceholder}>
-                      <FiExternalLink />
-                    </span>
-                  </div>
-                </>
-              ) : !selection ? (
-                <>
-                  <h3 className={styles.cardItemPlaceholder}>Select an input capability</h3>
-                  <div className={styles.cardFooter}>
-                    <span className={styles.cardLibraryPlaceholder}>Library name</span>
-                    <span className={styles.cardLinkPlaceholder}>
-                      <FiExternalLink />
-                    </span>
-                  </div>
-                </>
-              ) : (
-                <AnimatePresence mode="wait">
+              <AnimatePresence mode="wait" initial={false}>
+                {!selection ? (
                   <motion.div
-                    key={selection.input.item}
+                    key="placeholder"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.2 }}
+                    className={styles.cardContent}
+                  >
+                    <h3 className={styles.cardItemPlaceholder}>Select an input capability</h3>
+                    <div className={styles.cardFooter}>
+                      <span className={styles.cardLibraryPlaceholder}>Library name</span>
+                      <span className={styles.cardLinkPlaceholder}>
+                        <FiExternalLink />
+                      </span>
+                    </div>
+                  </motion.div>
+                ) : (
+                  <motion.div
+                    key={`input-${selection.input.item}-${selection.input.library}`}
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -10 }}
-                    transition={{ duration: 0.3 }}
+                    transition={{ duration: 0.3, ease: "easeInOut" }}
+                    className={styles.cardContent}
                   >
                     <h3 className={styles.cardItem}>{selection.input.item}</h3>
                     <a 
@@ -253,8 +151,8 @@ export default function Home() {
                       </div>
                     </a>
                   </motion.div>
-                </AnimatePresence>
-              )}
+                )}
+              </AnimatePresence>
             </div>
           </div>
 
@@ -266,38 +164,32 @@ export default function Home() {
               <span className={!selection && !loadingSelection ? styles.cardLabelDisabled : ''}>Output</span>
             </div>
             <div className={`${styles.card} ${!selection && !loadingSelection ? styles.cardDisabled : ''}`}>
-              {loadingSelection ? (
-                <>
-                  <h3 className={styles.cardItem}>
-                    <RotatingText options={outputOptions} />
-                  </h3>
-                  <div className={styles.cardFooter}>
-                    <span className={styles.cardLibrary}>
-                      <RotatingText options={libraryOptions} />
-                    </span>
-                    <span className={styles.cardLinkPlaceholder}>
-                      <FiExternalLink />
-                    </span>
-                  </div>
-                </>
-              ) : !selection ? (
-                <>
-                  <h3 className={styles.cardItemPlaceholder}>Select an output capability</h3>
-                  <div className={styles.cardFooter}>
-                    <span className={styles.cardLibraryPlaceholder}>Library name</span>
-                    <span className={styles.cardLinkPlaceholder}>
-                      <FiExternalLink />
-                    </span>
-                  </div>
-                </>
-              ) : (
-                <AnimatePresence mode="wait">
+              <AnimatePresence mode="wait" initial={false}>
+                {!selection ? (
                   <motion.div
-                    key={selection.output.item}
+                    key="placeholder"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.2 }}
+                    className={styles.cardContent}
+                  >
+                    <h3 className={styles.cardItemPlaceholder}>Select an output capability</h3>
+                    <div className={styles.cardFooter}>
+                      <span className={styles.cardLibraryPlaceholder}>Library name</span>
+                      <span className={styles.cardLinkPlaceholder}>
+                        <FiExternalLink />
+                      </span>
+                    </div>
+                  </motion.div>
+                ) : (
+                  <motion.div
+                    key={`output-${selection.output.item}-${selection.output.library}`}
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -10 }}
-                    transition={{ duration: 0.3 }}
+                    transition={{ duration: 0.3, ease: "easeInOut" }}
+                    className={styles.cardContent}
                   >
                     <h3 className={styles.cardItem}>{selection.output.item}</h3>
                     <a 
@@ -312,8 +204,8 @@ export default function Home() {
                       </div>
                     </a>
                   </motion.div>
-                </AnimatePresence>
-              )}
+                )}
+              </AnimatePresence>
             </div>
           </div>
         </div>
