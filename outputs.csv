@@ -1,0 +1,64 @@
+capability,library,link
+Local push notifications,UserNotifications,https://developer.apple.com/documentation/usernotifications
+"Rich media attachments (images, videos, audio)",UserNotifications,https://developer.apple.com/documentation/usernotifications
+Interactive action buttons,UserNotifications,https://developer.apple.com/documentation/usernotifications
+Custom notification UI,UserNotifications,https://developer.apple.com/documentation/usernotifications
+Scheduled delivery,UserNotifications,https://developer.apple.com/documentation/usernotifications
+Location-triggered notifications,UserNotifications,https://developer.apple.com/documentation/usernotifications
+App badge updates,UserNotifications,https://developer.apple.com/documentation/usernotifications
+Custom notification sounds,UserNotifications,https://developer.apple.com/documentation/usernotifications
+"Home screen widgets (small, medium, large, extra large)",WidgetKit,https://developer.apple.com/documentation/widgetkit
+"Lock screen widgets (circular, rectangular, inline)",WidgetKit,https://developer.apple.com/documentation/widgetkit
+StandBy mode displays,WidgetKit,https://developer.apple.com/documentation/widgetkit
+Timeline updates (system-scheduled refreshes),WidgetKit,https://developer.apple.com/documentation/widgetkit
+Interactive widgets (iOS 17+),WidgetKit,https://developer.apple.com/documentation/widgetkit
+Widget deep links,WidgetKit,https://developer.apple.com/documentation/widgetkit
+Smart Stack relevance,WidgetKit,https://developer.apple.com/documentation/widgetkit
+Dynamic Island (persistent UI in status bar area),ActivityKit,https://developer.apple.com/documentation/activitykit
+Lock screen live updates,ActivityKit,https://developer.apple.com/documentation/activitykit
+Push updates to live activities,ActivityKit,https://developer.apple.com/documentation/activitykit
+Real-time activity state updates,ActivityKit,https://developer.apple.com/documentation/activitykit
+App icon badge count,UIApplication,https://developer.apple.com/documentation/uikit/uiapplication/
+Alternate app icons,UIApplication,https://developer.apple.com/documentation/uikit/uiapplication/
+Siri shortcuts,App Intents,https://developer.apple.com/documentation/appintents
+Spotlight integration,App Intents,https://developer.apple.com/documentation/appintents
+Search indexing (app content in Spotlight),App Intents,https://developer.apple.com/documentation/appintents
+Shortcuts app actions,App Intents,https://developer.apple.com/documentation/appintents
+Focus filters,App Intents,https://developer.apple.com/documentation/appintents
+Calendar events (create/modify system calendar),EventKit,https://developer.apple.com/documentation/eventkit
+Reminders (create/modify system reminders),EventKit,https://developer.apple.com/documentation/eventkit
+Event alarms,EventKit,https://developer.apple.com/documentation/eventkit
+Save photos/videos to library,PhotoKit,https://developer.apple.com/documentation/PhotoKit
+Create photo albums,PhotoKit,https://developer.apple.com/documentation/PhotoKit
+Modify photo assets,PhotoKit,https://developer.apple.com/documentation/PhotoKit
+Watch complications,WatchKit,https://developer.apple.com/documentation/watchkit
+Watch face data updates,WatchKit,https://developer.apple.com/documentation/watchkit
+Custom watch notifications,WatchKit,https://developer.apple.com/documentation/watchkit
+File provider (app documents in Files app),FileProvider,https://developer.apple.com/documentation/fileprovider
+System-wide file access,FileProvider,https://developer.apple.com/documentation/fileprovider
+iMessage extensions (rich cards/stickers),Messages Framework,https://developer.apple.com/documentation/messages/
+Message layouts,Messages Framework,https://developer.apple.com/documentation/messages/
+Stickers,Messages Framework,https://developer.apple.com/documentation/messages/
+Applets,Messages Framework,https://developer.apple.com/documentation/messages/
+Universal links (HTTPS URLs that open app),Universal Links,https://developer.apple.com/documentation/xcode/allowing-apps-and-websites-to-link-to-your-content/
+Handoff (cross-device continuity),Universal Links,https://developer.apple.com/documentation/xcode/allowing-apps-and-websites-to-link-to-your-content/
+Background app refresh,BackgroundTasks,https://developer.apple.com/documentation/backgroundtasks
+Background processing tasks,BackgroundTasks,https://developer.apple.com/documentation/backgroundtasks
+Silent push notifications,BackgroundTasks,https://developer.apple.com/documentation/backgroundtasks
+Background audio playback,AVFoundation,https://developer.apple.com/av-foundation/
+Now Playing info (lock screen controls),AVFoundation,https://developer.apple.com/av-foundation/
+Remote playback controls,AVFoundation,https://developer.apple.com/av-foundation/
+App rating prompts,StoreKit,https://developer.apple.com/documentation/storekit/
+In-app purchase UI,StoreKit,https://developer.apple.com/documentation/storekit/
+Custom share destinations,Share Extensions,https://developer.apple.com/library/archive/documentation/General/Conceptual/ExtensibilityPG/Share.html
+Action extensions on shared content,Share Extensions,https://developer.apple.com/library/archive/documentation/General/Conceptual/ExtensibilityPG/Share.html
+Home automations,HomeKit,https://developer.apple.com/documentation/homekit/
+Smart home scenes,HomeKit,https://developer.apple.com/documentation/homekit/
+Write health data,HealthKit,https://developer.apple.com/documentation/healthkit
+Health summary sharing,HealthKit,https://developer.apple.com/documentation/healthkit
+Save map locations/pins,MapKit,https://developer.apple.com/documentation/mapkit/
+Custom haptic patterns,CoreHaptics,https://developer.apple.com/documentation/corehaptics/
+Notification haptics,CoreHaptics,https://developer.apple.com/documentation/corehaptics/
+Impact feedback,CoreHaptics,https://developer.apple.com/documentation/corehaptics/
+Text-to-speech output,AVSpeechSynthesizer,https://developer.apple.com/documentation/AVFAudio/AVSpeechSynthesizer
+Siri voice responses,AVSpeechSynthesizer,https://developer.apple.com/documentation/AVFAudio/AVSpeechSynthesizer

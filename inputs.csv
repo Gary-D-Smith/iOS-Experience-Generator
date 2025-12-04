@@ -1,0 +1,150 @@
+capability,library,link
+"GPS coordinates (latitude, longitude, altitude)",Core Location,https://developer.apple.com/documentation/corelocation
+"Speed and course (velocity, direction of travel)",Core Location,https://developer.apple.com/documentation/corelocation
+Location accuracy (horizontal/vertical precision),Core Location,https://developer.apple.com/documentation/corelocation
+Compass heading (direction relative to magnetic and true north),Core Location,https://developer.apple.com/documentation/corelocation
+Floor level (indoor positioning),Core Location,https://developer.apple.com/documentation/corelocation
+Significant location changes (battery-efficient ~500m updates),Core Location,https://developer.apple.com/documentation/corelocation
+Visit monitoring (automatically detects arrivals/departures at precise locations),Core Location,https://developer.apple.com/documentation/corelocation
+"Geofencing (circular regions, entry/exit notifications)",Core Location,https://developer.apple.com/documentation/corelocation
+Background location (continuous or significant-change monitoring),Core Location,https://developer.apple.com/documentation/corelocation
+Accelerometer (3-axis raw acceleration in G's),CoreMotion,https://developer.apple.com/documentation/coremotion
+Gyroscope (3-axis rotation rate in radians/sec),CoreMotion,https://developer.apple.com/documentation/coremotion
+Magnetometer (3-axis magnetic field in microteslas),CoreMotion,https://developer.apple.com/documentation/coremotion
+"Device Motion (sensor fusion: attitude, gravity-separated acceleration, rotation)",CoreMotion,https://developer.apple.com/documentation/coremotion
+"Pedometer (step count, distance, floors up/down, pace, cadence)",CoreMotion,https://developer.apple.com/documentation/coremotion
+"Activity Recognition (stationary, walking, running, cycling, automotive, unknown)",CoreMotion,https://developer.apple.com/documentation/coremotion
+"Activity confidence (low, medium, high certainty)",CoreMotion,https://developer.apple.com/documentation/coremotion
+"Barometric altimeter (relative altitude, atmospheric pressure in kPa)",CoreMotion,https://developer.apple.com/documentation/coremotion
+Historical queries (can retrieve past pedometer and activity data),CoreMotion,https://developer.apple.com/documentation/coremotion
+Background capability (activity and pedometer work in background),CoreMotion,https://developer.apple.com/documentation/coremotion
+"Heart rate (current, resting, walking average, workout)",HealthKit,https://developer.apple.com/documentation/healthkit
+Heart rate variability (HRV/SDNN),HealthKit,https://developer.apple.com/documentation/healthkit
+Blood oxygen saturation (SpO2),HealthKit,https://developer.apple.com/documentation/healthkit
+Respiratory rate,HealthKit,https://developer.apple.com/documentation/healthkit
+ECG readings,HealthKit,https://developer.apple.com/documentation/healthkit
+VO2 Max,HealthKit,https://developer.apple.com/documentation/healthkit
+Step count,HealthKit,https://developer.apple.com/documentation/healthkit
+Walking/running distance,HealthKit,https://developer.apple.com/documentation/healthkit
+Cycling distance,HealthKit,https://developer.apple.com/documentation/healthkit
+Flights climbed,HealthKit,https://developer.apple.com/documentation/healthkit
+Active energy burned (calories),HealthKit,https://developer.apple.com/documentation/healthkit
+Resting/basal energy,HealthKit,https://developer.apple.com/documentation/healthkit
+Exercise minutes,HealthKit,https://developer.apple.com/documentation/healthkit
+Stand hours,HealthKit,https://developer.apple.com/documentation/healthkit
+In bed time,HealthKit,https://developer.apple.com/documentation/healthkit
+Asleep time,HealthKit,https://developer.apple.com/documentation/healthkit
+"Sleep stages (REM, Core, Deep, Awake)",HealthKit,https://developer.apple.com/documentation/healthkit
+Sleep schedule,HealthKit,https://developer.apple.com/documentation/healthkit
+Walking speed,HealthKit,https://developer.apple.com/documentation/healthkit
+Walking step length,HealthKit,https://developer.apple.com/documentation/healthkit
+Walking asymmetry percentage,HealthKit,https://developer.apple.com/documentation/healthkit
+Double support time,HealthKit,https://developer.apple.com/documentation/healthkit
+Stair speed (up/down),HealthKit,https://developer.apple.com/documentation/healthkit
+Six-minute walk test distance,HealthKit,https://developer.apple.com/documentation/healthkit
+Headphone audio exposure levels,HealthKit,https://developer.apple.com/documentation/healthkit
+Environmental audio exposure levels,HealthKit,https://developer.apple.com/documentation/healthkit
+Meditation/mindfulness session duration,HealthKit,https://developer.apple.com/documentation/healthkit
+"Workout type (running, cycling, swimming, etc.)",HealthKit,https://developer.apple.com/documentation/healthkit
+"Duration, distance, energy burned",HealthKit,https://developer.apple.com/documentation/healthkit
+Heart rate during workout,HealthKit,https://developer.apple.com/documentation/healthkit
+Route data,HealthKit,https://developer.apple.com/documentation/healthkit
+Water intake,HealthKit,https://developer.apple.com/documentation/healthkit
+Caffeine intake,HealthKit,https://developer.apple.com/documentation/healthkit
+Body mass,HealthKit,https://developer.apple.com/documentation/healthkit
+Body fat percentage,HealthKit,https://developer.apple.com/documentation/healthkit
+(many more dietary and body measurements),HealthKit,https://developer.apple.com/documentation/healthkit
+Background delivery (can get notified of new data in background),HealthKit,https://developer.apple.com/documentation/healthkit
+"Calendar events (title, notes, location, start/end times)",EventKit,https://developer.apple.com/documentation/eventkit
+"Event attendees (names, emails, status)",EventKit,https://developer.apple.com/documentation/eventkit
+Event recurrence (repeat patterns),EventKit,https://developer.apple.com/documentation/eventkit
+Event alarms (notification times),EventKit,https://developer.apple.com/documentation/eventkit
+All-day events,EventKit,https://developer.apple.com/documentation/eventkit
+"Event availability (busy, free, tentative)",EventKit,https://developer.apple.com/documentation/eventkit
+"Multiple calendars (personal, work, subscribed)",EventKit,https://developer.apple.com/documentation/eventkit
+"Reminders/Tasks (title, notes, priority, due date)",EventKit,https://developer.apple.com/documentation/eventkit
+Reminder completion status,EventKit,https://developer.apple.com/documentation/eventkit
+Reminder location-based alerts,EventKit,https://developer.apple.com/documentation/eventkit
+"Create, modify, delete events and reminders",EventKit,https://developer.apple.com/documentation/eventkit
+"Current conditions (temperature, feels-like temperature)",WeatherKit,https://developer.apple.com/weatherkit/
+"Weather description (clear, cloudy, rain, snow, etc.)",WeatherKit,https://developer.apple.com/weatherkit/
+"Precipitation (amount, probability, type)",WeatherKit,https://developer.apple.com/weatherkit/
+Humidity (percentage),WeatherKit,https://developer.apple.com/weatherkit/
+Pressure (barometric),WeatherKit,https://developer.apple.com/weatherkit/
+Visibility,WeatherKit,https://developer.apple.com/weatherkit/
+Dew point,WeatherKit,https://developer.apple.com/weatherkit/
+"Wind (speed, direction, gusts)",WeatherKit,https://developer.apple.com/weatherkit/
+UV index,WeatherKit,https://developer.apple.com/weatherkit/
+Cloud cover (percentage),WeatherKit,https://developer.apple.com/weatherkit/
+Hourly forecast (next 240 hours),WeatherKit,https://developer.apple.com/weatherkit/
+Daily forecast (next 10 days),WeatherKit,https://developer.apple.com/weatherkit/
+Severe weather alerts,WeatherKit,https://developer.apple.com/weatherkit/
+Historical weather (past data),WeatherKit,https://developer.apple.com/weatherkit/
+"Location-based (any coordinates, not just user location)",WeatherKit,https://developer.apple.com/weatherkit/
+Battery level (0-100%),UIKit,https://developer.apple.com/documentation/uikit
+"Battery state (unplugged, charging, full, unknown)",UIKit,https://developer.apple.com/documentation/uikit
+Low power mode (enabled/disabled),UIKit,https://developer.apple.com/documentation/uikit
+"Device orientation (portrait, landscape, face up/down)",UIKit,https://developer.apple.com/documentation/uikit
+Screen brightness (0-1.0),UIKit,https://developer.apple.com/documentation/uikit
+"Thermal state (nominal, fair, serious, critical)",UIKit,https://developer.apple.com/documentation/uikit
+"Device model (iPhone, iPad, etc.)",UIKit,https://developer.apple.com/documentation/uikit
+System version (iOS version),UIKit,https://developer.apple.com/documentation/uikit
+Available storage space,UIKit,https://developer.apple.com/documentation/uikit
+Memory pressure,UIKit,https://developer.apple.com/documentation/uikit
+Processor count,UIKit,https://developer.apple.com/documentation/uikit
+System uptime,UIKit,https://developer.apple.com/documentation/uikit
+"Connection status (connected, disconnected)",Network,https://developer.apple.com/documentation/network
+"Interface type (WiFi, cellular, wired, loopback)",Network,https://developer.apple.com/documentation/network
+Expensive connection (cellular data flagged),Network,https://developer.apple.com/documentation/network
+Constrained connection (low data mode),Network,https://developer.apple.com/documentation/network
+Path monitoring (real-time connection changes),Network,https://developer.apple.com/documentation/network
+VPN status,Network,https://developer.apple.com/documentation/network
+Carrier name,CoreTelephony,https://developer.apple.com/documentation/coretelephony
+"Cellular technology (5G, LTE, 4G, 3G, etc.)",CoreTelephony,https://developer.apple.com/documentation/coretelephony
+Mobile country code (MCC),CoreTelephony,https://developer.apple.com/documentation/coretelephony
+Mobile network code (MNC),CoreTelephony,https://developer.apple.com/documentation/coretelephony
+ISO country code,CoreTelephony,https://developer.apple.com/documentation/coretelephony
+Allows VoIP (carrier capability),CoreTelephony,https://developer.apple.com/documentation/coretelephony
+Multiple SIM support (dual SIM info),CoreTelephony,https://developer.apple.com/documentation/coretelephony
+"App usage time (per app, total duration)",DeviceActivity,https://developer.apple.com/documentation/deviceactivity
+"App category usage (social, productivity, entertainment, games, etc.)",DeviceActivity,https://developer.apple.com/documentation/deviceactivity
+"Web domain usage (websites visited, duration per domain)",DeviceActivity,https://developer.apple.com/documentation/deviceactivity
+Device pickups (count of times device was picked up),DeviceActivity,https://developer.apple.com/documentation/deviceactivity
+Notifications received (count per app),DeviceActivity,https://developer.apple.com/documentation/deviceactivity
+First pickup time (when device first used each day),DeviceActivity,https://developer.apple.com/documentation/deviceactivity
+"Screen time reports (daily, weekly summaries)",DeviceActivity,https://developer.apple.com/documentation/deviceactivity
+Most-used apps,DeviceActivity,https://developer.apple.com/documentation/deviceactivity
+App limits tracking (if user has set limits),DeviceActivity,https://developer.apple.com/documentation/deviceactivity
+"Now playing info (song, artist, album, artwork)",MediaPlayer,https://developer.apple.com/documentation/mediaplayer
+"Playback state (playing, paused, stopped)",MediaPlayer,https://developer.apple.com/documentation/mediaplayer
+"Playback time (current position, duration)",MediaPlayer,https://developer.apple.com/documentation/mediaplayer
+Music library access (user's saved music),MediaPlayer,https://developer.apple.com/documentation/mediaplayer
+Recently played (Apple Music history),MediaPlayer,https://developer.apple.com/documentation/mediaplayer
+Listening history (with Apple Music API),MediaPlayer,https://developer.apple.com/documentation/mediaplayer
+Playback queue,MediaPlayer,https://developer.apple.com/documentation/mediaplayer
+Shuffle/repeat state,MediaPlayer,https://developer.apple.com/documentation/mediaplayer
+Volume level,MediaPlayer,https://developer.apple.com/documentation/mediaplayer
+"Audio session (active, interrupted, route change)",AVFoundation,https://developer.apple.com/av-foundation/
+"Audio route (speaker, headphones, Bluetooth, etc.)",AVFoundation,https://developer.apple.com/av-foundation/
+"Microphone access (requires permission, foreground only)",AVFoundation,https://developer.apple.com/av-foundation/
+Audio level metering (input levels when recording),AVFoundation,https://developer.apple.com/av-foundation/
+Ambient sound detection (when actively listening),AVFoundation,https://developer.apple.com/av-foundation/
+"Audio interruptions (calls, other apps)",AVFoundation,https://developer.apple.com/av-foundation/
+Contact list access (with permission),Framework,https://developer.apple.com/documentation/addressbook
+"Contact names, phone numbers, emails",Framework,https://developer.apple.com/documentation/addressbook
+Contact photos,Framework,https://developer.apple.com/documentation/addressbook
+"Contact relationships (mother, spouse, etc.)",Framework,https://developer.apple.com/documentation/addressbook
+Photo library access,PhotoKit,https://developer.apple.com/documentation/photokit
+"Photo metadata (timestamp, location, camera settings)",PhotoKit,https://developer.apple.com/documentation/photokit
+Photo additions (when new photos taken),PhotoKit,https://developer.apple.com/documentation/photokit
+Album organization,PhotoKit,https://developer.apple.com/documentation/photokit
+"Burst photos, live photos, videos",PhotoKit,https://developer.apple.com/documentation/photokit
+Favorites,PhotoKit,https://developer.apple.com/documentation/photokit
+Recently deleted,PhotoKit,https://developer.apple.com/documentation/photokit
+"Smart home device states (lights on/off, temperature, etc.)",HomeKit,https://developer.apple.com/documentation/homekit/
+Home automation triggers,HomeKit,https://developer.apple.com/documentation/homekit/
+Scene activation,HomeKit,https://developer.apple.com/documentation/homekit/
+Accessory usage patterns,HomeKit,https://developer.apple.com/documentation/homekit/
+Connected vehicle info (when CarPlay is active),CarPlay,https://www.apple.com/ios/carplay/
+Navigation state,CarPlay,https://www.apple.com/ios/carplay/
+Audio routing to car,CarPlay,https://www.apple.com/ios/carplay/

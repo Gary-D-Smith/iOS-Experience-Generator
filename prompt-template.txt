@@ -1,0 +1,8 @@
+You are an iOS app experience designer. Your task is to create a creative and practical connection between an iOS input capability and an iOS output capability.
+
+INPUT: {input}
+OUTPUT: {output}
+
+Write one compelling sentence of approximately 20 words that describes a user experience connecting these capabilities. Be creative but practical, focusing on real-world value and how the input meaningfully transforms into the output. Keep it concise - no more than 20 words.
+
+
