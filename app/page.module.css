@@ -17,7 +17,7 @@
 
 .title {
   font-size: 2.5rem;
-  font-weight: 700;
+  font-weight: 900;
   margin-bottom: 0.5rem;
   color: #333;
   text-align: center;
@@ -33,7 +33,7 @@
 .actions {
   display: flex;
   gap: 1rem;
-  margin-bottom: 2rem;
+  margin-bottom: -0.5rem;
   justify-content: center;
   align-items: center;
 }
@@ -63,8 +63,8 @@
 }
 
 .circleButton {
-  width: 120px;
-  height: 120px;
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
   border: 3px solid #333;
   background: white;
@@ -149,7 +149,7 @@
 
 .selection {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 2rem;
   margin-bottom: 2rem;
   flex-wrap: wrap;
@@ -190,6 +190,7 @@
 
 .card {
   width: 100%;
+  max-width: 100%;
   background: #f8f9fa;
   border-radius: 12px;
   padding: 1.5rem;
@@ -199,10 +200,12 @@
   display: flex;
   flex-direction: column;
   position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
 }
 
 .card:hover:not(.cardDisabled) {
-  border-color: #333;
+  border-color: #999;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
@@ -225,6 +228,13 @@
   margin: 0;
   line-height: 1.4;
   flex: 1;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+  hyphens: auto;
+  white-space: normal;
+  max-width: 100%;
+  box-sizing: border-box;
+  min-width: 0;
 }
 
 .cardItemPlaceholder {
@@ -270,6 +280,9 @@
   font-size: 0.85rem;
   color: #666;
   font-weight: 500;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+  white-space: normal;
 }
 
 .cardLibraryPlaceholder {
@@ -301,6 +314,10 @@
   font-size: 2rem;
   color: #333;
   font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
   margin-top: 2rem;
 }
 
@@ -319,10 +336,17 @@
   border-top: 2px solid #e9ecef;
 }
 
+.responseHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
 .responseTitle {
   font-size: 1.5rem;
   font-weight: 600;
-  margin-bottom: 1rem;
+  margin: 0;
   color: #333;
 }
 
@@ -333,16 +357,57 @@
   margin-bottom: 1.5rem;
   line-height: 1.8;
   border: 1px solid #e9ecef;
+  min-height: 120px;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  transition: all 0.2s;
+  position: relative;
+}
+
+.responseContent:hover {
+  border-color: #999;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .responseContentEmpty {
   opacity: 0.6;
 }
 
+.copyButton {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  background: transparent;
+  border: none;
+  border-radius: 4px;
+  padding: 0.4rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #999;
+  transition: all 0.2s;
+  opacity: 0.6;
+}
+
+.copyButton:hover {
+  color: #666;
+  opacity: 1;
+}
+
+.copyButton:active {
+  transform: scale(0.85);
+  opacity: 0.8;
+}
+
 .paragraph {
   margin: 0;
   color: #333;
   font-size: 1rem;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+  hyphens: auto;
+  white-space: normal;
 }
 
 .paragraphPlaceholder {
@@ -398,6 +463,10 @@
 
   .title {
     font-size: 2rem;
+  }
+
+  .actions {
+    margin-bottom: 1em;
   }
 
   .selection {

@@ -2,8 +2,39 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FiDownload, FiUpload, FiExternalLink } from 'react-icons/fi';
+import { FiDownload, FiUpload, FiExternalLink, FiCopy } from 'react-icons/fi';
+import { GiPerspectiveDiceSixFacesRandom } from 'react-icons/gi';
 import styles from './page.module.css';
+
+// Component to animate text letter by letter
+function AnimatedText({ text, className }: { text: string; className?: string }) {
+  const letters = Array.from(text);
+  
+  return (
+    <span className={className} style={{ wordBreak: 'break-word', overflowWrap: 'anywhere' }}>
+      {letters.map((letter, index) => (
+        <motion.span
+          key={index}
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{
+            duration: 0.2,
+            delay: index * 0.01,
+            ease: "easeOut"
+          }}
+          style={{ 
+            display: 'inline-block',
+            whiteSpace: letter === ' ' ? 'pre' : 'normal',
+            wordBreak: 'break-word',
+            overflowWrap: 'anywhere'
+          }}
+        >
+          {letter === ' ' ? '\u00A0' : letter}
+        </motion.span>
+      ))}
+    </span>
+  );
+}
 
 interface Selection {
   input: {
@@ -85,6 +116,16 @@ export default function Home() {
     }
   };
 
+  const copyToClipboard = async () => {
+    if (!response) return;
+    
+    try {
+      await navigator.clipboard.writeText(response);
+    } catch (err) {
+      console.error('Failed to copy text:', err);
+    }
+  };
+
   return (
     <main className={styles.main}>
       <div className={styles.container}>
@@ -100,7 +141,7 @@ export default function Home() {
             className={styles.circleButton}
             aria-label="Get Random Selection"
           >
-            <span className={styles.circleButtonText}>Get Random</span>
+            <GiPerspectiveDiceSixFacesRandom className={styles.circleButtonText} size={58} />
           </button>
         </div>
 
@@ -138,7 +179,9 @@ export default function Home() {
                     transition={{ duration: 0.3, ease: "easeInOut" }}
                     className={styles.cardContent}
                   >
-                    <h3 className={styles.cardItem}>{selection.input.item}</h3>
+                    <h3 className={styles.cardItem}>
+                      <AnimatedText text={selection.input.item} />
+                    </h3>
                     <a 
                       href={selection.input.link} 
                       target="_blank" 
@@ -146,7 +189,9 @@ export default function Home() {
                       className={styles.cardFooterLink}
                     >
                       <div className={styles.cardFooter}>
-                        <span className={styles.cardLibrary}>{selection.input.library}</span>
+                        <span className={styles.cardLibrary}>
+                          <AnimatedText text={selection.input.library} />
+                        </span>
                         <FiExternalLink className={styles.cardLinkIcon} />
                       </div>
                     </a>
@@ -191,7 +236,9 @@ export default function Home() {
                     transition={{ duration: 0.3, ease: "easeInOut" }}
                     className={styles.cardContent}
                   >
-                    <h3 className={styles.cardItem}>{selection.output.item}</h3>
+                    <h3 className={styles.cardItem}>
+                      <AnimatedText text={selection.output.item} />
+                    </h3>
                     <a 
                       href={selection.output.link} 
                       target="_blank" 
@@ -199,7 +246,9 @@ export default function Home() {
                       className={styles.cardFooterLink}
                     >
                       <div className={styles.cardFooter}>
-                        <span className={styles.cardLibrary}>{selection.output.library}</span>
+                        <span className={styles.cardLibrary}>
+                          <AnimatedText text={selection.output.library} />
+                        </span>
                         <FiExternalLink className={styles.cardLinkIcon} />
                       </div>
                     </a>
@@ -210,16 +259,6 @@ export default function Home() {
           </div>
         </div>
 
-        <div className={styles.actions}>
-          <button
-            onClick={generateExperience}
-            disabled={!selection || loading}
-            className={styles.buttonPrimary}
-          >
-            {loading ? 'Generating...' : 'Generate Experience'}
-          </button>
-        </div>
-
         {error && (
           <div className={styles.error}>
             <strong>Error:</strong> {error}
@@ -227,20 +266,44 @@ export default function Home() {
         )}
 
         <div className={styles.response}>
-          <h2 className={styles.responseTitle}>Generated Experience</h2>
-          <div className={`${styles.responseContent} ${!response ? styles.responseContentEmpty : ''}`}>
+          <div className={styles.responseHeader}>
+            <h2 className={styles.responseTitle}>Generated Experience</h2>
+            <button
+              onClick={generateExperience}
+              disabled={!selection || loading}
+              className={styles.buttonPrimary}
+            >
+              {loading ? 'Generating...' : 'Generate Experience'}
+            </button>
+          </div>
+          <motion.div 
+            className={`${styles.responseContent} ${!response ? styles.responseContentEmpty : ''}`}
+            layout
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+          >
             {loading ? (
               <div className={styles.skeleton}>
-                <div className={styles.skeletonLine} style={{ width: '100%', height: '16px', marginBottom: '12px' }}></div>
-                <div className={styles.skeletonLine} style={{ width: '95%', height: '16px', marginBottom: '12px' }}></div>
-                <div className={styles.skeletonLine} style={{ width: '90%', height: '16px' }}></div>
+                <div className={styles.skeletonLine} style={{ width: '100%', height: '15px', marginBottom: '12px' }}></div>
+                <div className={styles.skeletonLine} style={{ width: '95%', height: '15px', marginBottom: '12px' }}></div>
+                <div className={styles.skeletonLine} style={{ width: '90%', height: '15px' }}></div>
               </div>
             ) : response ? (
-              <p className={styles.paragraph}>{response}</p>
+              <>
+                <p className={styles.paragraph}>
+                  <AnimatedText text={response} />
+                </p>
+                <button
+                  onClick={copyToClipboard}
+                  className={styles.copyButton}
+                  aria-label="Copy text"
+                >
+                  <FiCopy size={18} />
+                </button>
+              </>
             ) : (
               <p className={styles.paragraphPlaceholder}>Generate an experience to see it here</p>
             )}
-          </div>
+          </motion.div>
         </div>
       </div>
     </main>
